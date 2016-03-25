@@ -1,7 +1,7 @@
 pkgname=sabnzbd
 _pkgname=SABnzbd
-pkgver=0.7.20
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="A web-interface based binary newsgrabber with NZB file support"
 url="http://www.sabnzbd.org"
 arch=("any")
@@ -32,10 +32,18 @@ source=(
 	"x-nzb.xml"
 	"${pkgname}.service"
 )
+sha256sums=('7573dfafd6f3b51e899f47436de0e0b3d8e83a568e2a6f0f3da0aaa1f3d4cfaa'
+            '82630edfc767a383843ffaae9d716e99010dad9e93bdee08d541faa74e694a65'
+            '6214a92f775888133a8f87ec69e4d0d2ecc9fafbe61387778767000e4db3ea8f'
+            'baea3351a40551a63b90b4a4c32719d4c27b5fff596e74e4a91f289964960eb6'
+            '7fec4494a04ffd6a94644c8ef499ec1c92998a613b1fde5c3a46f38c53dfbc43'
+            '099d625d6efc9e69e7c6a2833221928fb19e9e356e3aa8341c36ffdc281e567d'
+            'f53261d7578c67fb9fd6a639df94cd53604bcf37b9b03a926cb03e5214b496fe'
+            'f3ab799b24ffab84fea95214b63ba548be2787a47cd802a05967361f1efb43d6')
 
 package() {
 	mkdir -p "${pkgdir}/opt/${pkgname}"
-	touch "${pkgdir}/opt/${pkgname}/${pkgname}.ini"
+	touch "${pkgdir}/opt/${pkgname}/.${pkgname}.ini"
 	cp -rv "${srcdir}/${_pkgname}-${pkgver}/"* "${pkgdir}/opt/${pkgname}"
 
 	# make sure it uses python2
@@ -44,7 +52,7 @@ package() {
 	find "${pkgdir}/opt/${pkgname}" -type f -exec chmod 644 {} \;
 
 	chmod 755 "${pkgdir}/opt/${pkgname}/${_pkgname}.py"
-	chmod 755 "${pkgdir}/opt/${pkgname}/Sample-PostProc.sh"
+	#chmod 755 "${pkgdir}/opt/${pkgname}/Sample-PostProc.sh"
 
 	install -Dm755 "${srcdir}/${pkgname}" \
 		"${pkgdir}/usr/bin/${pkgname}"
@@ -62,11 +70,3 @@ package() {
 		"${pkgdir}/opt/${pkgname}/x-nzb.xml"
 }
 
-sha256sums=('20b3a4613a0ecdede4fdfeb628ae806e458ac1a6fb684306328dd4ed1faf8742'
-            '82630edfc767a383843ffaae9d716e99010dad9e93bdee08d541faa74e694a65'
-            '6214a92f775888133a8f87ec69e4d0d2ecc9fafbe61387778767000e4db3ea8f'
-            'baea3351a40551a63b90b4a4c32719d4c27b5fff596e74e4a91f289964960eb6'
-            '7fec4494a04ffd6a94644c8ef499ec1c92998a613b1fde5c3a46f38c53dfbc43'
-            '099d625d6efc9e69e7c6a2833221928fb19e9e356e3aa8341c36ffdc281e567d'
-            'f53261d7578c67fb9fd6a639df94cd53604bcf37b9b03a926cb03e5214b496fe'
-            '148f6f4d57873fe5a35a157a383f188968c170c7ed5db6ff3a8fb9846e5ea45d')

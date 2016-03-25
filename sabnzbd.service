@@ -4,8 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/bin/sh -c "python2 /opt/sabnzbd/SABnzbd.py"
-#ExecStop=/usr/bin/curl -f "http://127.0.0.1:1027/shutdown?session=${SABNZBD_KEY}" # replace sabnzbd key with your api key
+ExecStart=/bin/sh -c "/usr/bin/sabnzbd"
 User=sabnzbd
 Group=sabnzbd
 
