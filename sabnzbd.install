@@ -1,8 +1,4 @@
 post_install() {
-  # add x-nzb mimetype
-  xdg-mime install --mode system "/opt/sabnzbd/x-nzb.xml"
-  xdg-icon-resource install --context mimetypes --size 64 "/opt/sabnzbd/nzb-2.png" application-x-nzb
-
   post_upgrade
 }
 
@@ -10,11 +6,6 @@ post_upgrade() {
   groupadd sabnzbd &> /dev/null
   useradd -g sabnzbd -d /opt/sabnzbd -s /bin/false sabnzbd &> /dev/null
   chown -R sabnzbd:sabnzbd /opt/sabnzbd
-}
-
-pre_remove() {
-  xdg-mime uninstall --mode system "/opt/sabnzbd/x-nzb.xml"
-  xdg-icon-resource uninstall --context mimetypes --size 64 application-x-nzb
 }
 
 post_remove() {

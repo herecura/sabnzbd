@@ -1,7 +1,7 @@
 pkgname=sabnzbd
 _pkgname=SABnzbd
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A web-interface based binary newsgrabber with NZB file support"
 url="http://www.sabnzbd.org"
 arch=("any")
@@ -13,6 +13,9 @@ depends=(
 	"sqlite"
 	"unrar"
 	"unzip"
+    'desktop-file-utils'
+    'hicolor-icon-theme'
+    'shared-mime-info'
 )
 optdepends=(
 	"xdg-utils: registration of .nzb files"
