@@ -1,6 +1,6 @@
 pkgname=sabnzbd
 _pkgname=SABnzbd
-pkgver=1.0.3
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="A web-interface based binary newsgrabber with NZB file support"
 url="http://www.sabnzbd.org"
@@ -26,7 +26,7 @@ optdepends=(
 install="${pkgname}.install"
 backup=("opt/${pkgname}/${pkgname}.ini")
 source=(
-	"http://downloads.sourceforge.net/sabnzbdplus/${_pkgname}-${pkgver}-src.tar.gz"
+    "https://github.com/${pkgname}/${pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}-src.tar.gz"
 	"${pkgname}"
 	"${pkgname}.desktop"
 	"addnzb.sh"
@@ -35,14 +35,14 @@ source=(
 	"x-nzb.xml"
 	"${pkgname}.service"
 )
-sha256sums=('cf87d3f17fc03e8b3a4b3010261115c2ad7e2f773b5ede95a80025b340dbbd35'
-            '82630edfc767a383843ffaae9d716e99010dad9e93bdee08d541faa74e694a65'
-            '6214a92f775888133a8f87ec69e4d0d2ecc9fafbe61387778767000e4db3ea8f'
-            'baea3351a40551a63b90b4a4c32719d4c27b5fff596e74e4a91f289964960eb6'
-            '7fec4494a04ffd6a94644c8ef499ec1c92998a613b1fde5c3a46f38c53dfbc43'
-            '099d625d6efc9e69e7c6a2833221928fb19e9e356e3aa8341c36ffdc281e567d'
-            'f53261d7578c67fb9fd6a639df94cd53604bcf37b9b03a926cb03e5214b496fe'
-            'f3ab799b24ffab84fea95214b63ba548be2787a47cd802a05967361f1efb43d6')
+sha512sums=('80677df12a278a12a20405812f4f434625fa3a9dd769d8734b92771436a82ec6810fbc180e2b9b4ca9e15efc14b79d217b1392ff2a43785b803966afb9e3eb80'
+            '98bcc1bc6137208a9c44749e76f8d5eccc7a77c4b3bb4066c868f11f50cca4485ee12830752cc9ec45b2a806d7f98707a09feaee145a94bd61a7c62a9113845a'
+            '3c787adf220447b30e3af30c9abf60f484b56c5fd12a4335c2225f7b533ee386e88d1aba1c41514f6f687aa5554782c8e27740d1d2071260956c10e412b5aba0'
+            'dc35291f22b126fa9739148f98570a5a828ba2f52e5da0c9ba04ff9b0641cba95774619a83e26bc12b2527b77b7c3a7768ac6ca176bd6c3c547960f842e913ba'
+            'dd59c27b1d52addee8c3e8b9a8f6e5c89afba169ed6d17cf811e27f998509d14c64dad96ea2d28501704281acb4ee393dbe314a921f73da377fc599eb9ec7bdd'
+            'c135278e254611e1ad6e34ec2d6f207e2299dbf3c3ce3ddef2e7bbfe83129d29b51ad6041a90559409d1734d7092ffe7a6c8f78c3d1372b6d2d58bff9c553a84'
+            'bd0345ca5f9f826e9686818a703ad88f22133a50a308af2c3acf8c370479bdcc38a9ff639b2046a3281d4d4bce443b11e39a1b47073ce0ff7c5fc71abbe2ec77'
+            '87e6a07774e958c49ca62eca34b045521937fcfa9c11320996dadb280e4637cdf4bca10f3bc2af41fdde075f37fba0440b357946efc14bc5b1e73c9b53d13d1e')
 
 package() {
 	mkdir -p "${pkgdir}/opt/${pkgname}"
@@ -55,7 +55,6 @@ package() {
 	find "${pkgdir}/opt/${pkgname}" -type f -exec chmod 644 {} \;
 
 	chmod 755 "${pkgdir}/opt/${pkgname}/${_pkgname}.py"
-	#chmod 755 "${pkgdir}/opt/${pkgname}/Sample-PostProc.sh"
 
 	install -Dm755 "${srcdir}/${pkgname}" \
 		"${pkgdir}/usr/bin/${pkgname}"
