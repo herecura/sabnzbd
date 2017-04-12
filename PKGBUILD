@@ -1,7 +1,7 @@
 pkgname=sabnzbd
 _pkgname=SABnzbd
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A web-interface based binary newsgrabber with NZB file support"
 url="http://www.sabnzbd.org"
 arch=("any")
@@ -9,7 +9,7 @@ license=("GPL")
 depends=(
 	"par2cmdline"
 	"python2-cheetah"
-	"python2-yenc"
+	"python2-sabyenc"
 	"sqlite"
 	"unrar"
 	"unzip"
